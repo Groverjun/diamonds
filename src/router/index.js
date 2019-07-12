@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import app from '@/components/app'
+import home from '@/components/home/home'
+import chart from '@/components/chart/chart'
+import my from '@/components/my/my'
+import wallet from '@/components/wallet/wallet'
 
 Vue.use(Router)
 
@@ -9,7 +13,13 @@ export default new Router({
     {
       path: '/',
       name: 'app',
-      component: app
+      component: app,
+      children:[
+      	{path: '/app/home', component: home,name: 'home'},
+      	{path: '/app/chart', component: chart,name: 'chart'},
+      	{path: '/app/my', component: my,name: 'my'},
+      	{path: '/app/wallet', component: wallet,name: 'wallet'},
+      ],redirect:'/app/home'
     }
   ]
 })
